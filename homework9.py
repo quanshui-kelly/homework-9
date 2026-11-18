@@ -40,7 +40,7 @@ class BinaryPerceptron(object):
     def predict(self, x):
         def _dot_product(weights, features):
             return sum(weights.get(name, 0.0) * value
-                    for name, value in features.items())
+                for name, value in features.items())
         return _dot_product(self.weights, x) > 0
 
 
@@ -66,12 +66,12 @@ class MulticlassPerceptron(object):
                         predicted_weights[name] = (
                             predicted_weights.get(name, 0.0) - value
                         )
-    
+
     def predict(self, x):
         def _dot_product(weights, features):
             return sum(weights.get(name, 0.0) * value
-                    for name, value in features.items())
-        
+                for name, value in features.items())
+   
         if not self.labels:
             raise ValueError("Cannot predict without any class labels.")
 
@@ -87,7 +87,7 @@ class MulticlassPerceptron(object):
 
 class IrisClassifier(object):
 
-    def _features(instance):
+    def _features(self, instance):
         features = {index: value
                     for index, value in enumerate(instance)}
         features["bias"] = 1.0
@@ -106,7 +106,7 @@ class IrisClassifier(object):
 
 class DigitClassifier(object):
 
-    def _features(instance):
+    def _features(self, instance):
         features = {index: value
                     for index, value in enumerate(instance)}
         features["bias"] = 1.0
@@ -125,7 +125,7 @@ class DigitClassifier(object):
 
 class BiasClassifier(object):
 
-    def _features(instance):
+    def _features(self, instance):
         return {"value": instance, "bias": 1.0}
 
     def __init__(self, data):
@@ -141,7 +141,7 @@ class BiasClassifier(object):
 
 class MysteryClassifier1(object):
 
-    def _features(instance):
+    def _features(self, instance):
         x_1, x_2 = instance
         radius_squared = x_1 ** 2 + x_2 ** 2
         return {"radius_squared": radius_squared, "bias": 1.0}
@@ -159,7 +159,7 @@ class MysteryClassifier1(object):
 
 class MysteryClassifier2(object):
 
-    def _features(instance):
+    def _features(self, instance):
         x_1, x_2, x_3 = instance
         return {"product": x_1 * x_2 * x_3}
 
@@ -184,12 +184,12 @@ feedback_question_1 = """
 """
 
 feedback_question_2 = """
-The most challenging part of this assignment was choosing appropriate 
-feature transformations for the two mystery data sets. 
+The most challenging part of this assignment was choosing appropriate
+feature transformations for the two mystery data sets.
 """
 
 feedback_question_3 = """
-I enjoyed the mystery-classifier questions because they showed that 
-choosing a good representation can be just as important as 
+I enjoyed the mystery-classifier questions because they showed that
+choosing a good representation can be just as important as
 choosing a learning algorithm.
 """
