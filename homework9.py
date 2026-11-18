@@ -39,8 +39,10 @@ class BinaryPerceptron(object):
 
     def predict(self, x):
         def _dot_product(weights, features):
-            return sum(weights.get(name, 0.0) * value
-                for name, value in features.items())
+            return sum(
+                weights.get(name, 0.0) * value
+                for name, value in features.items()
+            )
         return _dot_product(self.weights, x) > 0
 
 
@@ -69,9 +71,11 @@ class MulticlassPerceptron(object):
 
     def predict(self, x):
         def _dot_product(weights, features):
-            return sum(weights.get(name, 0.0) * value
-                for name, value in features.items())
-   
+            return sum(
+                weights.get(name, 0.0) * value
+                for name, value in features.items()
+            )
+
         if not self.labels:
             raise ValueError("Cannot predict without any class labels.")
 
